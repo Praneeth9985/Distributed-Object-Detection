@@ -10,9 +10,6 @@ from util import *
 import itertools
 import math
 
-# This file contains code required for any preprocessing of real data, as well as splitting it into partitions 
-# Currently this contains code relevant to the amazon-dataset (https://www.kaggle.com/c/amazon-employee-access-challenge)
-# and dna dataset ftp://largescale.ml.tu-berlin.de/largescale/dna/
 
 if len(sys.argv) != 7:
     print("Usage: python arrange_real_data.py n_procs input_dir real_dataset n_stragglers n_partitions partial_coded")
