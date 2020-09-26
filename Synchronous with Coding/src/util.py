@@ -7,7 +7,7 @@ import itertools
 import scipy.special as sp
 from scipy.sparse import csr_matrix
 
-# ---- Data generation, saving, loading and modification routines
+
 
 def load_data(input_file):
     mydata = np.loadtxt(input_file,dtype=float)
@@ -34,14 +34,13 @@ def save_vector(m, output):
         print("%5.3f" %(m[i])+" ", file=f)
     f.close()
 
-# generates a random matrix representing samples from a two-component GMM with identity covariance
 def generate_random_matrix_normal(mu1, mu2, n_rows, n_cols):
     ctrmu2 = np.random.binomial(n_rows,0.5)
     ctrmu1 = n_rows - ctrmu2 
     mfac = 10/np.sqrt(n_cols)
     return np.concatenate((np.add(mfac*np.random.standard_normal((ctrmu1, n_cols)), mu1), np.add(mfac*np.random.standard_normal((ctrmu2, n_cols)), mu2)))
 
-# generates a vector of random labels, each entry only has value -1 or 1
+
 def generate_random_binvec(n):
     return np.array([np.random.randint(2)*2-1 for x in range(n)])
 
@@ -54,7 +53,6 @@ def interactionTermsAmazon(data, degree, hash=hash):
     return np.array(new_data).T
 
 # ---- Other routines 
-
 def unique_rows(a):
     b = np.ascontiguousarray(a).view(np.dtype((np.void, a.dtype.itemsize * a.shape[1])))
     _, idx = np.unique(b, return_index=True)
