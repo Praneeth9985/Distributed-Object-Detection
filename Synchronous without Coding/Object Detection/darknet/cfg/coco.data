@@ -1,0 +1,8 @@
+classes= 80
+train  = /mnt/f/Object Detection/data/coco/trainvalno5k.txt
+valid  = coco_testdev
+#valid = /mnt/f/Object Detection/data/coco/5k.txt
+names = data/coco.names
+backup = /mnt/f/Object Detection/backup/
+eval=coco
+
