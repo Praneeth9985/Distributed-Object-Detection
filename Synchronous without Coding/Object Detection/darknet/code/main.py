@@ -2,12 +2,7 @@ from __future__ import print_function
 import time
 import sys
 sys.path.append('./src/')
-from naive import *
-from coded import *
-from replication import *
-from avoidstragg import *
-from partial_replication import *
-from partial_coded import *
+from syncr import *
 import numpy as np
 from mpi4py import MPI
 
@@ -48,24 +43,6 @@ if not size == n_procs:
 if not is_real:
     dataset = "artificial-data/" + str(n_rows) + "x" + str(n_cols)
 
-if is_coded:
-
-    if partitions:
-        if(coded_ver == 1):
-            partial_replication_logistic_regression(n_procs, n_rows, n_cols, input_dir + dataset +"/partial/" + str((partitions-n_stragglers)*(n_procs-1)) + "/", n_stragglers, partitions, is_real, params)
-        elif(coded_ver == 0):
-            partial_coded_logistic_regression(n_procs, n_rows, n_cols, input_dir + dataset +"/partial/" + str((partitions-n_stragglers)*(n_procs-1)) + "/", n_stragglers, partitions, is_real, params)
-            
-    else:
-        if(coded_ver == 0):
-            coded_logistic_regression(n_procs, n_rows, n_cols, input_dir + dataset +"/" + str(n_procs-1) + "/", n_stragglers, is_real, params)
-            
-        elif(coded_ver == 1):
-            replication_logistic_regression(n_procs, n_rows, n_cols, input_dir + dataset +"/" + str(n_procs-1) + "/", n_stragglers, is_real, params)
-
-        elif(coded_ver ==2):
-            avoidstragg_logistic_regression(n_procs, n_rows, n_cols, input_dir + dataset +"/" + str(n_procs-1) + "/", n_stragglers, is_real, params)
-else:
     naive_logistic_regression(n_procs, n_rows, n_cols, input_dir + dataset +"/" + str(n_procs-1) + "/", is_real, params)
 
 comm.Barrier()

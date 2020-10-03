@@ -8,7 +8,7 @@ import scipy.sparse as sps
 import time
 from mpi4py import MPI
 
-def naive_logistic_regression(n_procs, n_samples, n_features, input_dir, is_real_data, params):
+def synrhonous_ob(n_procs, n_samples, n_features, input_dir, is_real_data, params):
 
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
@@ -79,7 +79,7 @@ def naive_logistic_regression(n_procs, n_samples, n_features, input_dir, is_real
 
     if rank==0:
         orig_start_time= time.time()
-        print("---- Starting Naive Iterations ----")
+        print("---- Starting  Iterations ----")
 
     for i in range(rounds):
         
