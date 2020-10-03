@@ -33,7 +33,7 @@ starcluster start -c mycluster mynewcluster <br />
         Specify the data set path and size in the fields DATASET, N_ROWS and N_COLS, and set IS_REAL to 1.<br />
         Use make arrange_real_data to preprocess the data and break it into partitions.<br />
     Edit the number of iterations, regularization coefficient and learning rate schedules in the file main.py through the variables num_itrs, alpha and learning_rate_schedule etc.<br />
-    Now, run gradient descent for various schemes as follows:
+    Now, run: <br />
         make syncr.
         
 
